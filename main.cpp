@@ -27,11 +27,23 @@ std::string chek (std::string a) {
         return "No!";
     }
 }
+int count (std::string a) {
+    int count = 0;
+
+    for (int i = 0; i < a.length(); i++) {
+        if (a[i] == '.') {
+            break;
+        }
+        count++;
+    }
+    return count;
+}
+
 
 
 
 int main() {
-    std::string first_number, second_number;
+    std::string first_number, second_number, n_1, n_2;
     do {
 
         std::cout << "Enter two number:\n";
@@ -41,5 +53,5 @@ int main() {
         std::cin >> second_number;
     } while (chek(first_number) == "No!" || chek(second_number) == "No!");
 
-    std::cout << "Number good!";
+    std::cout <<  count(first_number) << "\t" << count(second_number);
 }
