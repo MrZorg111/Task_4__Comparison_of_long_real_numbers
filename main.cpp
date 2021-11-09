@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 
 std::string chek (std::string a) {
     int count = 0;
@@ -31,14 +32,36 @@ int count (std::string a) {
     int count = 0;
 
     for (int i = 0; i < a.length(); i++) {
+        char op = a[i];
         if (a[i] == '.') {
             break;
         }
-        count++;
+        if (op > 47 && op < 58) {
+            count++;
+        }
     }
     return count;
 }
-
+std::string str_big_small(std::string c, std::string d) {
+    for ( int i = 0; i < c.length(); i++) {
+        if (c[i] > d[i]) {
+            return "More";
+        }if (c[i] < d[i]) {
+            return "Less";
+        }if (c[i] == d[i] && i == c.length() - 1){
+            return "Equal";
+        }
+    }
+}
+std::string big_small (int a, int b, std::string x, std::string y) {
+    if (a > b) {
+        return "More";
+    }else if (a < b) {
+        return "less";
+    }else if (a == b) {
+       return str_big_small(x, y);
+    }
+}
 
 
 
@@ -53,5 +76,6 @@ int main() {
         std::cin >> second_number;
     } while (chek(first_number) == "No!" || chek(second_number) == "No!");
 
-    std::cout <<  count(first_number) << "\t" << count(second_number);
+
+    std::cout << "\n" << big_small(count(first_number), count(second_number), first_number, second_number);
 }
