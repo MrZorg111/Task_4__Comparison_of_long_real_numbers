@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cmath>
+
 
 std::string chek (std::string a) {
     int count = 0;
@@ -43,24 +43,36 @@ int count (std::string a) {
     return count;
 }
 std::string str_big_small(std::string c, std::string d) {
-    for ( int i = 0; i < c.length(); i++) {
+    for ( int i = 0; i < c.length() || i < d.length(); i++) {
+        if (c[i] == '.' && i == d.length()) {
+            std::cout << "Yahoooo!";
+            for (int j = i + 1; j < c.length(); j++){
+                if (c[j] == '0' && j == c.length() - 1) {
+                    return "Equal";
+                }else {
+                    return "More";
+                }
+            }
+        }
         if (c[i] > d[i]) {
+            std::cout << i;
             return "More";
         }if (c[i] < d[i]) {
             return "Less";
-        }if (c[i] == d[i] && i == c.length() - 1){
-            return "Equal";
         }
     }
+    return std::string();
 }
 std::string big_small (int a, int b, std::string x, std::string y) {
     if (a > b) {
+        std::cout << "Hoooya";
         return "More";
     }else if (a < b) {
         return "less";
     }else if (a == b) {
        return str_big_small(x, y);
     }
+    return std::string();
 }
 
 
