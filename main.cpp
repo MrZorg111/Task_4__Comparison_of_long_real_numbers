@@ -89,6 +89,22 @@ std::string recycling (std::string a) {
 
 std::string str_processing (std::string a, std::string b) {
     int length = fmax(a.length(), b.length()), count_f = 0, count_s = 0;
+    bool a_good = true, b_good = true;
+
+    for (int t = 0; t < length; t++) {
+        if (a[t] == '.') {
+            a_good = false;
+        }
+        else if (b[t] == '.') {
+            b_good = false;
+        }
+        if (a_good) {
+            count_f++;
+        }
+        if (b_good) {
+            count_s++;
+        }
+    }
     if (a[0] == '-' && a[1] > '0' && b[0] != '-') {
         return "Less!";
     }
@@ -100,12 +116,6 @@ std::string str_processing (std::string a, std::string b) {
         return "Equal!";
     }
     if (a[0] != '-' && b[0] != '-') {
-        for (int t = 0; a[t] != '.' && t < a.length(); t++) {
-            count_f++;
-        }
-        for (int j = 0; b[j] != '.' && j < b.length(); j++) {
-            count_s++;
-        }
         if (count_f < count_s) {
             return "Less!";
         }
@@ -135,12 +145,6 @@ std::string str_processing (std::string a, std::string b) {
         }
     }
     if (a[0] == '-' && b[0] == '-') {
-        for (int t = 0; a[t] != '.' && t < a.length(); t++) {
-            count_f++;
-        }
-        for (int j = 0; b[j] != '.' && j < b.length(); j++) {
-            count_s++;
-        }
         if (count_f < count_s) {
             return "More!";
         }
